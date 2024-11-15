@@ -2,7 +2,7 @@ class LoginPage extends HTMLElement {
 
   constructor() {
     super();
-    this.attachShadow({mode: 'open'});
+    this.attachShadow({ mode: 'open' });
 
     this.shadowRoot.innerHTML = /*html*/`
       <style>
@@ -21,6 +21,8 @@ class LoginPage extends HTMLElement {
 
     //Manejar el evento de login y asociar el metodo handleLogin
     this.shadowRoot.addEventListener('login:access', this.handleLogin.bind(this));
+  
+    this.shadowRoot.addEventListener('login:info', this.handleLogin.bind(this));
   }
 
   handleLogin(event) {

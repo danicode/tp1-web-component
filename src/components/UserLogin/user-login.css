@@ -3,6 +3,10 @@ h1 {
     font-size: 16px;
 }
 
+#info {
+    cursor: pointer;
+}
+
 .form-group {
     display: flex;
     width: 100%;

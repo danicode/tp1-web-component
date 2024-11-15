@@ -8,7 +8,7 @@ class UserLogin extends HTMLElement {
   connectedCallback() {
     this.shadowRoot.innerHTML = /*html*/ `
       <link rel="stylesheet" href="./components/UserLogin/user-login.css">
-      <h1>Ingresar</h1>
+      <h1>🧊Ingresar <span id="info" title="Click para ver información">❔</span></h1>
 
       <form id='login-form' novalidate>
         <div class="form-group">
@@ -23,8 +23,19 @@ class UserLogin extends HTMLElement {
       </form>
     `;
 
+    this.shadowRoot.getElementById('info')
+      .addEventListener('click', this.showInfo.bind(this))
+
     this.shadowRoot.getElementById('login-form')
       .addEventListener('submit', this.submitForm.bind(this));
+  }
+
+  showInfo() {
+    this.dispatchEvent(new CustomEvent('login:info', {
+      detail: { type: 'info', message: 'ℹ️ Para ingresar <b>Usuario</b>: admin y <b>Contraseña</b>: admin :)' },
+      bubbles: true,
+      composed: true
+    }));
   }
 
   submitForm(event) {
@@ -46,11 +57,11 @@ class UserLogin extends HTMLElement {
   // Logica de autenticacion
   // Dependiendo de la autenticacion se asigna un type para luego emitir el evento al padre LoginPage
   #validationLogin(username, password) {
-    if (!username || !password) return { type: 'warning', message: 'Debe ingresar Usuario y Contraseña.' };
+    if (!username || !password) return { type: 'warning', message: '⚠️ Debe ingresar <b>Usuario</b> y <b>Contraseña</b>.' };
   
-    if (username === 'admin' && password === 'admin') return { type: 'success', message: 'Inicio de sesión exitoso.' };
+    if (username === 'admin' && password === 'admin') return { type: 'success', message: '✅ Inicio de sesión exitoso.' };
 
-    return { type: 'error', message: 'Error en el inicio de sesión.' };
+    return { type: 'error', message: '🔴 Error en el inicio de sesión.' };
   }
 }
 

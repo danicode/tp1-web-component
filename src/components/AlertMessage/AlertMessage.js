@@ -16,9 +16,7 @@ class AlertMessage extends HTMLElement {
   //Configurar reactividad en ambas propiedades,
   // en caso que modifique cualquier de las 2 variables se muestre una cosa u otra
   attributeChangedCallback(name, oldValue, newValue) {
-    if (oldValue !== newValue) {
-      this.render();
-    }
+    this.render();
   }
 
   //Por practicidad se hizo un metodo render para reutilizarlo tanto cuando se agrega a alguna
@@ -39,8 +37,15 @@ class AlertMessage extends HTMLElement {
       <link rel="stylesheet" href="./components/AlertMessage/alert-message.css">
       <div class="alert ${ type }">
           ${ message }
+          <span class="close" title="Presiona para cerrar la notificación">✖️</span>
       </div>
     `;
+
+    // Agregar el evento de clic al botón de cierre
+    const closeButton = this.shadowRoot.querySelector('.close');
+    closeButton.addEventListener('click', () => {
+      this.style.display = 'none';
+    });
   }
 }
 

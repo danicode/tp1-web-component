@@ -19,5 +19,8 @@
     background-color: #ff4c4c;
 }
 .info {
-    background-color: #1a4c8e
+    background-color: #2591cf;
+}
+.close {
+    cursor: pointer;
 }
