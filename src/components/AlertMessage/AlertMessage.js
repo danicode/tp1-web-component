@@ -36,30 +36,7 @@ class AlertMessage extends HTMLElement {
     this.style.display = 'block';
 
     this.shadowRoot.innerHTML = /*html*/ `
-      <style>
-          :host {
-              display: block;
-              margin: 10px 0;
-          }
-          .alert {
-              padding: 15px;
-              border-radius: 5px;
-              margin-bottom: 10px;
-              color: white;
-          }
-          .success {
-              background-color: #4caf50;
-          }
-          .warning {
-              background-color: #ffcc00;
-          }
-          .error {
-              background-color: #ff4c4c;
-          }
-          .info {
-              background-color: #1a4c8e
-          }
-      </style>
+      <link rel="stylesheet" href="./components/AlertMessage/alert-message.css">
       <div class="alert ${ type }">
           ${ message }
       </div>

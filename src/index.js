@@ -1,3 +1,2 @@
-import "./components/AlertMessage.js";
-import "./components/UserLogin.js";
-import "./pages/LoginPage.js";
+import "./components/index.js";
+import "./pages/index.js";
