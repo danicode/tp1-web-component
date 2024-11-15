@@ -27,18 +27,18 @@ class AlertMessage extends HTMLElement {
 
     // En caso de ser enviado mensaje no se muestra el componente
     if (!message) {
-        this.style.display = 'none';
-        return;
+      this.style.display = 'none';
+      return;
     }
 
     this.style.display = 'block';
 
     this.shadowRoot.innerHTML = /*html*/ `
-      <link rel="stylesheet" href="./components/AlertMessage/alert-message.css">
-      <div class="alert ${ type }">
-          ${ message }
-          <span class="close" title="Presiona para cerrar la notificación">✖️</span>
-      </div>
+        <link rel="stylesheet" href="./components/AlertMessage/alert-message.css">
+        <div class="alert ${ type }">
+            ${ message }
+            <span class="close" title="Presiona para cerrar la notificación">✖️</span>
+        </div>
     `;
 
     // Agregar el evento de clic al botón de cierre

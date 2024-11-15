@@ -7,20 +7,20 @@ class UserLogin extends HTMLElement {
 
   connectedCallback() {
     this.shadowRoot.innerHTML = /*html*/ `
-      <link rel="stylesheet" href="./components/UserLogin/user-login.css">
-      <h1>🧊Ingresar <span id="info" title="Click para ver información">❔</span></h1>
+        <link rel="stylesheet" href="./components/UserLogin/user-login.css">
+        <h1>🧊Ingresar <span id="info" title="Click para ver información">❔</span></h1>
 
-      <form id='login-form' novalidate>
-        <div class="form-group">
-          <label>Usuario:</label>
-          <input type="text" id="username" name="username" required />
-        </div>
-        <div class="form-group">
-          <label>Contraseña:</label>
-          <input type="password" id="password" name="password" required />
-        </div>
-        <button type="submit">Iniciar Sesión</button>
-      </form>
+        <form id='login-form' novalidate>
+            <div class="form-group">
+                <label>Usuario:</label>
+                <input type="text" id="username" name="username" required />
+            </div>
+            <div class="form-group">
+                <label>Contraseña:</label>
+                <input type="password" id="password" name="password" required />
+            </div>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
     `;
 
     this.shadowRoot.getElementById('info')
