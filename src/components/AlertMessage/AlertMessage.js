@@ -3,10 +3,17 @@ class AlertMessage extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
+    this._handleCloseClick = this._handleCloseClick.bind(this);
   }
 
   connectedCallback() {
     this.render();
+  }
+
+  disconnectedCallback() {
+    //post entrega
+    const closeButton = this.shadowRoot.querySelector('.close');
+    closeButton?.removeEventListener('click', this._handleCloseClick);
   }
 
   static get observedAttributes() {
@@ -43,9 +50,11 @@ class AlertMessage extends HTMLElement {
 
     // Agregar el evento de clic al botón de cierre
     const closeButton = this.shadowRoot.querySelector('.close');
-    closeButton.addEventListener('click', () => {
-      this.style.display = 'none';
-    });
+    closeButton?.addEventListener('click', this._handleCloseClick);
+  }
+
+  _handleCloseClick() {
+    this.style.display = 'none';
   }
 }
 

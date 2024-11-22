@@ -16,6 +16,13 @@ class LoginPage extends HTMLElement {
     this.shadowRoot.addEventListener('login:info', this.handleInfo.bind(this));
   }
 
+  disconnectedCallback() {
+    //post entrega
+    this.shadowRoot.removeEventListener('login:access', this.handleLogin.bind(this));
+  
+    this.shadowRoot.removeEventListener('login:info', this.handleInfo.bind(this));
+  }
+
   handleLogin(event) {
     this.#showAlert(event);
   }
@@ -28,8 +35,12 @@ class LoginPage extends HTMLElement {
   //actualizar el componente alerta.
   #showAlert(event) {
     const alertMessage = this.shadowRoot.querySelector('alert-message');
-    alertMessage.setAttribute('type', event.detail.type);
-    alertMessage.setAttribute('message', event.detail.message);
+    if (event.detail && event.detail.type && event.detail.message) {
+      alertMessage?.setAttribute('type', event.detail.type);
+      alertMessage?.setAttribute('message', event.detail.message);
+    } else {
+      console.warn('Event detail is missing required properties');
+    }
   }
 }
 

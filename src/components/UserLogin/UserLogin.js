@@ -30,6 +30,12 @@ class UserLogin extends HTMLElement {
       .addEventListener('submit', this.submitForm.bind(this));
   }
 
+  disconnectedCallback() {
+    //post entrega
+    this.shadowRoot.getElementById('info').removeEventListener('click', this.showInfo.bind(this));
+    this.shadowRoot.getElementById('login-form').removeEventListener('submit', this.submitForm.bind(this));
+  }
+
   showInfo() {
     this.dispatchEvent(new CustomEvent('login:info', {
       detail: { type: 'info', message: 'ℹ️ Para ingresar <b>Usuario</b>: admin y <b>Contraseña</b>: admin :)' },
